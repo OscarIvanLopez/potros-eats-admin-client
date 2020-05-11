@@ -1,36 +1,38 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
 import AuthContext from "../../context/autenticacion/authContext";
-import { Link } from "react-router-dom";
 
-const Login = (props) => {
+const NuevaCuenta = (props) => {
     //* Extraer los valores del context
     const alertaContext = useContext(AlertaContext);
     const { alerta, mostrarAlerta } = alertaContext;
 
     //* Extraer los valores y funciones de AuthContext
     const authContext = useContext(AuthContext);
-    const { mensaje, autenticado, iniciarSesion } = authContext;
-    //* En caso de que el password o usuario no exista
+    const { mensaje, autenticado, registrarUsuario } = authContext;
+
+    //* en caso de que el usuario se haya autenticado o registrado o sea un registro duplicado
     useEffect(() => {
         if (autenticado) {
             props.history.push("/proyectos");
         }
-
         if (mensaje) {
             mostrarAlerta(mensaje.msg, mensaje.categoria);
         }
         // eslint-disable-next-line
     }, [mensaje, autenticado, props.history]);
 
-    //State para iniciar sesion
+    //*State para iniciar sesion
     const [usuario, guardarUsuario] = useState({
+        nombre: "",
         email: "",
         password: "",
+        confirmar: "",
     });
 
-    // extraer de usuario
-    const { email, password } = usuario;
+    //* extraer  usuario
+    const { nombre, email, password, confirmar } = usuario;
 
     const onChange = (e) => {
         guardarUsuario({
@@ -39,32 +41,62 @@ const Login = (props) => {
         });
     };
 
-    //cuando el usuario quiera iniciar sesion
+    //*cuando el usuario quiera iniciar sesion
     const onSubmit = (e) => {
         e.preventDefault();
 
-        //validar que no haya campos vacios
-        if (email.trim() === "" || password.trim() === "") {
+        //*validar que no haya campos vacios
+        if (
+            nombre.trim() === "" ||
+            email.trim() === "" ||
+            password.trim() === "" ||
+            confirmar.trim() === ""
+        ) {
             mostrarAlerta("Todos los campos son obligatorios", "alerta-error");
+            return;
         }
-        //pasarlo al action
-        iniciarSesion({ email, password });
+        //*Password minimo de 6 caracteres
+        if (password.length < 6) {
+            mostrarAlerta(
+                "El password debe ser de al menos 6 caracteres",
+                "alerta-error"
+            );
+            return;
+        }
+        //*Los dos password sean iguales
+        if (password !== confirmar) {
+            mostrarAlerta("Los passwords no son iguales", "alerta-error");
+            return;
+        }
+        //*pasarlo al action
+        registrarUsuario({
+            nombre,
+            email,
+            password,
+        });
     };
 
     return (
         <div className="form-usuario">
             {alerta ? (
                 <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>
-            ) : null}{" "}
-            <img
-                src={require("../../img/ITSONnegativo.png")}
-                alt="Logo itson"
-                className="img-login img-size"
-            />
+            ) : null}
             <div className="contenedor-form sombra-dark">
-                <h1 className="h1-login">Iniciar Sesion</h1>
+                <h1>Obtener una cuenta</h1>
 
                 <form onSubmit={onSubmit}>
+                    <div className="campo-form">
+                        <label htmlFor="nombre">Nombre</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Tu Nombre"
+                            value={nombre}
+                            onChange={onChange}
+                        />
+                    </div>
+
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input
@@ -78,7 +110,7 @@ const Login = (props) => {
                     </div>
 
                     <div className="campo-form">
-                        <label htmlFor="email">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -90,20 +122,32 @@ const Login = (props) => {
                     </div>
 
                     <div className="campo-form">
+                        <label htmlFor="confirmar">Confirmar Password</label>
+                        <input
+                            type="password"
+                            id="confirmar"
+                            name="confirmar"
+                            placeholder="Repite tu Password"
+                            value={confirmar}
+                            onChange={onChange}
+                        />
+                    </div>
+
+                    <div className="campo-form">
                         <input
                             type="submit"
                             className="btn btn-primario btn-block"
-                            value="Ingresar"
+                            value="Registrarme"
                         />
                     </div>
                 </form>
 
-                <Link to={"/new-account"} className="enlace-cuenta">
-                    Obtener Cuenta
+                <Link to={"/"} className="enlace-cuenta">
+                    Volver a Iniciar Sesión
         </Link>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default NuevaCuenta;
