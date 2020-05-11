@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
-import TareaContext from "./tareaContext";
-import TareaReducer from "./tareaReducer";
+import TareaContext from "./comidaContext";
+import TareaReducer from "./comidaReducer";
 
 
 import {

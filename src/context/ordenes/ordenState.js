@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
-import proyectoContext from './proyectoContext';
-import projectoReducer from "./proyectoReducer";
+import proyectoContext from './ordenContext';
+import projectoReducer from "./ordenReducer";
 import {
     FORMULARIO_PROYECTO,
     OBTENER_PROYECTOS,

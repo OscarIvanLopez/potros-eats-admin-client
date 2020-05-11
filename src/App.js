@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/auth/Login'
 import NuevaCuenta from "./components/auth/NuevaCuenta";
-import Ordenes from './components/ordenes/Proyectos';
+import Ordenes from './components/ordenes/Ordenes';
 
-import OrdenState from './context/ordenes/proyectoState'
-import TareaState from './context/tareas/tareaState'
+import OrdenState from './context/ordenes/ordenState'
+import ComidaState from './context/comidas/comidaState'
 import AlertaState from './context/alertas/alertaState'
 import AuthState from './context/autenticacion/authState';
 import tokenAuth from './config/tokenAuth';
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <OrdenState>
-        <TareaState>
+        <ComidaState>
           <AlertaState>
             <AuthState>
               <Router>
@@ -36,7 +36,7 @@ function App() {
               </Router>
             </AuthState>
           </AlertaState>
-        </TareaState>
+        </ComidaState>
       </OrdenState>
     </div>
   );

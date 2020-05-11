@@ -81,6 +81,11 @@ const NuevaCuenta = (props) => {
             {alerta ? (
                 <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>
             ) : null}
+            <img
+                src={require("../../img/ITSONnegativo.png")}
+                alt="Logo itson"
+                className="img-login img-size"
+            />
             <div className="contenedor-form sombra-dark">
                 <h1>Obtener una cuenta</h1>
 

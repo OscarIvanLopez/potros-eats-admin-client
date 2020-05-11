@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
-import Tarea from './Tarea';
-import proyectoContext from "../../context/ordenes/proyectoContext";
-import tareaContext from '../../context/tareas/tareaContext';
+import Tarea from './Comida';
+import proyectoContext from "../../context/ordenes/ordenContext";
+import tareaContext from '../../context/comidas/comidaContext';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ListadoTareas = () => {
