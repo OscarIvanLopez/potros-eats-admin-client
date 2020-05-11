@@ -4,6 +4,7 @@
   --gris2: #2f3848;
   --gris3: #1a202d;
   --negro: #000000;
+  --azul: #0b6db5;
   --headingFont: "Raleway", sans-serif;
   --textFont: "Roboto", sans-serif;
 }
@@ -19,7 +20,7 @@ html {
 }
 body {
   min-height: 100%;
-  background-color: #0b6db5;
+  background-color: var(--blanco);
   font-size: 16px;
   font-size: 1.6rem;
   font-family: var(--textFont);
@@ -105,6 +106,7 @@ a {
   }
   .seccion-principal {
     flex: 1;
+    background-color: "#fff";
   }
 }
 
@@ -140,7 +142,7 @@ aside {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--gris2);
+  background-color: var(--azul);
   padding: 4rem;
 }
 .nombre-usuario {
@@ -196,7 +198,7 @@ aside {
 .tarea {
   display: flex;
   justify-content: space-between;
-  background-color: var(--blanco);
+  background-color: var(--azul);
   padding: 0.5rem 2rem;
   align-items: center;
   margin-bottom: 1rem;
@@ -369,4 +371,19 @@ label {
 
 .img-size{
 width: 50rem;
+}
+
+.header-potros{
+  color: var(--azul)
+}
+.header-eats{
+  color: #0d4064
+}
+
+.header-select{
+  color: var(--azul)
+}
+
+.ordenes-azul{
+  color: var(--azul)
 }

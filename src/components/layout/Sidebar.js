@@ -1,16 +1,16 @@
 import React from 'react'
-import NuevoProyecto from "../proyectos/NuevoProyecto";
-import ListadoProyectos from "../proyectos/ListadoProyectos";
+import NuevoProyecto from "../ordenes/NuevoProyecto";
+import ListadoProyectos from "../ordenes/ListadoProyectos";
 
 const Sidebar = () => {
     return (
         <aside>
-            <h1>MERN<span>Tasks</span></h1>
+            <h1 className="header-potros">POTROS<span className="header-eats">eats</span></h1>
 
             <NuevoProyecto/>
 
             <div className="proyectos">
-                <h2>Tus Proyectos</h2>
+                <h2 className="ordenes-azul">Tus Ordenes</h2>
                 <ListadoProyectos/>
 
 
