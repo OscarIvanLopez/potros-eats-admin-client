@@ -27,11 +27,11 @@ const ListadoTareas = () => {
 
     return (
         <Fragment>
-            <h2>Proyecto: {proyectoActual.nombre} </h2>
+            <h2 className="orden-seleccionada">Orden: {proyectoActual.nombre} </h2>
 
             <ul className="listado-tareas">
                 {tareasproyecto.length === 0
-                    ? (<li className="tarea"><p>No hay tareas</p></li>)
+                    ? (<li className="tarea"><p className="no-tareas">No hay tareas</p></li>)
                     :
                     <TransitionGroup>
                         {tareasproyecto.map(tarea => (
@@ -48,12 +48,13 @@ const ListadoTareas = () => {
                     </TransitionGroup>
                 }
             </ul>
-
+<div className="button-style">
             <button
                 type="button"
                 className="btn btn-eliminar"
                 onClick={onClickEliminar}
-            >Eliminar Proyecto &times;</button>
+            >Eliminar Orden &times;</button>
+            </div>
         </Fragment>
     );
 }

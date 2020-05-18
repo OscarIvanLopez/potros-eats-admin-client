@@ -40,7 +40,7 @@ const Tarea = ({ tarea }) => {
 
     return (
         <li className="tarea sombra">
-            <p>{tarea.nombre}</p>
+            <p className="tarea-color">{tarea.nombre}</p>
 
             <div className="estado">
                 {tarea.estado
