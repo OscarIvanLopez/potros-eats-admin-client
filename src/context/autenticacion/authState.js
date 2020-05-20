@@ -86,6 +86,7 @@ const AuthState = props => {
                 type: LOGIN_EXITOSO,
                 payload: respuesta.data
             });
+            
             //*Obtener el usuario
             usuarioAutenticado();
         } catch (error) {

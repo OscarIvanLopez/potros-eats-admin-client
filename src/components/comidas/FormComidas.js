@@ -6,15 +6,15 @@ import tareaContext from "../../context/comidas/comidaContext";
 
 const FormTarea = () => {
 
-    //* Obtener si el proyecto esta activo
+    //* Obtener si el orden esta activo
     const proyectosContext = useContext(proyectoContext);
     const { proyecto } = proyectosContext;
 
-    //* obtener la función del context de tarea
+    //* obtener la función del context de comida
     const tareasContext = useContext(tareaContext);
     const { tareaseleccionada, errortarea, validarTarea, agregarTarea, obtenerTareas, actualizarTarea, limpiarTarea } = tareasContext;
 
-    //* Effect que detecta si hay una tarea seleccionada
+    //* Effect que detecta si hay una comida seleccionada
     useEffect(() => {
         if (tareaseleccionada !== null) {
             guardarTarea(tareaseleccionada);

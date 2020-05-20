@@ -6,18 +6,18 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const ListadoTareas = () => {
 
-    // Extrar proyectos de state inicial
+    // Extrae ordenes de state inicial
     const proyectosContext = useContext(proyectoContext);
     const { proyecto, eliminarProyecto } = proyectosContext;
 
-    // obtener las tareas del proyecto
+    // obtener las comidas del proyecto
     const tareasContext = useContext(tareaContext);
     const { tareasproyecto } = tareasContext;
 
-    // Si no hay proyecto seleccionado
+    // Si no hay una Orden seleccionada
     if (!proyecto) return <h2 className="header-select">Selecciona una Orden</h2>;
 
-    // Array destructuring para extraer el proyecto actual
+    // Array destructuring para extraer la Orden actual
     const [proyectoActual] = proyecto;
 
     // Elimina un proyecto
@@ -31,7 +31,7 @@ const ListadoTareas = () => {
 
             <ul className="listado-tareas">
                 {tareasproyecto.length === 0
-                    ? (<li className="tarea"><p className="no-tareas">No hay tareas</p></li>)
+                    ? (<li className="tarea"><p className="no-tareas">No hay productos</p></li>)
                     :
                     <TransitionGroup>
                         {tareasproyecto.map(tarea => (
@@ -48,12 +48,12 @@ const ListadoTareas = () => {
                     </TransitionGroup>
                 }
             </ul>
-<div className="button-style">
-            <button
-                type="button"
-                className="btn btn-eliminar"
-                onClick={onClickEliminar}
-            >Eliminar Orden &times;</button>
+            <div className="button-style">
+                <button
+                    type="button"
+                    className="btn btn-eliminar"
+                    onClick={onClickEliminar}
+                >Eliminar Orden &times;</button>
             </div>
         </Fragment>
     );
